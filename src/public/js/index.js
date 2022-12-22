@@ -26,7 +26,14 @@ chatbox.addEventListener('keyup',event=>{
         }
     }
 })
-//recibir mensajes
+socket.on('first',data=>{
+    const divLog = document.getElementById('messageLogs')
+    let messages = ''
+    data.reverse().forEach(message => {
+        messages += `<p><i>${message.user}</i>: ${message.message}</p>`
+    });
+    divLog.innerHTML = messages
+})
 socket.on('logs',data=>{
     const divLog = document.getElementById('messageLogs')
     let messages = ''

@@ -17,6 +17,7 @@ const message = []
 
 io.on('connection', socket=>{
     console.log('New Client connected');
+    io.emit('first',message)
     socket.on('message', data=>{
         message.push(data);
         io.emit('logs',message)
